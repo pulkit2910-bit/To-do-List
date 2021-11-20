@@ -1,0 +1,28 @@
+module.exports.getDate = getDate;
+
+function getDate() {
+    var today = new Date();
+        
+    var options = {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric'
+    }
+    var day = today.toLocaleString("en-US", options);
+    
+    return day;
+}
+
+module.exports.getDay = getDay;
+
+function getDay() {
+    var today = new Date();
+        
+    var options = {
+        weekday: 'long',
+    }
+    var day = today.toLocaleString("en-US", options);
+    
+    return day;
+}

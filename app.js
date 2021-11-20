@@ -7,6 +7,8 @@ app.use(express.urlencoded())
 
 app.use(express.static("public"));
 
+const date = require(__dirname + "/date.js");
+
 var items = [];
 var workItems = [];
 var groceryItems = [];
@@ -35,28 +37,12 @@ app.post('/grocery-route', (req, res) => {
 })
 
 app.get("/home", (req, res) => {
-    var today = new Date();
-    
-    var options = {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric'
-    }
-    var day = today.toLocaleString("en-US", options);
+    var day = date.getDate();
     res.render('list', {listFor: "LIST FOR HOME", today: day, newListItems: items}); //res.render() will look in the views folder for 'list.ejs'
 })
 
 app.get("/work", (req, res) => {
-    var today = new Date();
-    
-    var options = {
-        weekday: 'long',
-        day: 'numeric',
-        month: 'short',
-        year: 'numeric'
-    }
-    var day = today.toLocaleString("en-US", options);
+    var day = date.getDate();
     res.render('list', {listFor: "TO DO LIST", today: day, newListItems: workItems})
 })
 
